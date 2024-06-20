@@ -1,0 +1,9 @@
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid black;
+    border-color: black;
+    width: 600px;
+    height: 600px;
+    gap: 0px;
+}
