@@ -1,8 +1,8 @@
 
 
 
-const num = 10
-
+const num = 8;
+let currentColorIsBlack = true;
 function createGrid(num)
 {
     for(let i = 0; i < num * num; i++)
@@ -20,6 +20,16 @@ function createGrid(num)
     }
 }
 
+document.getElementById("blackPicker").addEventListener("click",()=>{
+    currentColorIsBlack= true;
+});
+
+document.getElementById("rgbPicker").addEventListener("click",()=>{
+    
+    currentColorIsBlack= false;
+});
+
+
 document.getElementById("container").addEventListener("mouseover", (e) =>{
         let r = Math.floor(Math.random()*256);
         let g = Math.floor(Math.random()*256);
@@ -27,6 +37,7 @@ document.getElementById("container").addEventListener("mouseover", (e) =>{
        if(e.target.classList.contains("square"))
         {
             //e.target.style.backgroundColor = 'red';
+            currentColorIsBlack ? e.target.style.backgroundColor ="black" :
             e.target.style.backgroundColor = `rgb(${r},${g},${b})`
         }
     
@@ -45,14 +56,17 @@ document.getElementById("rangeInput").addEventListener("input",(e) =>{
     
 })
 
+
+
 document.getElementById("reset").addEventListener('click',(e)=>{
     const elements = container.getElementsByClassName("square");
+    let range = document.getElementById("rangeInput");
     let listOfSquares = Array.from(elements);
     listOfSquares.forEach(element =>{
         container.removeChild(element);
         
     })
-    createGrid(num);
+    createGrid(range.value);
 })
 
 createGrid(num);
